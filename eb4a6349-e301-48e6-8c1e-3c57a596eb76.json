@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "e79fbe8e-9e1c-4e0d-94e3-c6938050b04a",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25591874"
+	},
+	"item": [
+		{
+			"name": "Positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"cat\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"id\": 0,\n    \"username\": \"Cat\",\n    \"firstName\": \"Maya\",\n    \"lastName\": \"Puppy\",\n    \"email\": \"maya@i.ua\",\n    \"password\": \"cat\",\n    \"phone\": \"+380951112233\",\n    \"userStatus\": 0\n  }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/createWithArray?username=cat&userStatus=1",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"createWithArray"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "cat"
+						},
+						{
+							"key": "userStatus",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 300ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(300);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{userurl}}/user/cat",
+					"host": [
+						"{{userurl}}"
+					],
+					"path": [
+						"user",
+						"cat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"pretty\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 0,\n  \"phone\": \"0960001122\",\n  \"password\": \"test\",\n  \"userStatus\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{userurl}}/user/cat?email=cat@gmail.com&lastName=Pretty",
+					"host": [
+						"{{userurl}}"
+					],
+					"path": [
+						"user",
+						"cat"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "cat@gmail.com"
+						},
+						{
+							"key": "lastName",
+							"value": "Pretty"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Positive",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{userurl}}/user/cat",
+					"host": [
+						"{{userurl}}"
+					],
+					"path": [
+						"user",
+						"cat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 400ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n  {\n    \"id\": 0,\n    \"username\": \"--\",\n    \"firstName\": \"==\",\n    \"lastName\": \"//\",\n    \"email\": \"#\",\n    \"password\": \"__\",\n    \"phone\": \"<<\",\n    \"userStatus\": 0\n  }\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{userurl}}/user/createWithList?id=-4",
+					"host": [
+						"{{userurl}}"
+					],
+					"path": [
+						"user",
+						"createWithList"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "-4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 500ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(500);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{userurl}}/user/login?username=cat&password=1234",
+					"host": [
+						"{{userurl}}"
+					],
+					"path": [
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "cat"
+						},
+						{
+							"key": "password",
+							"value": "1234"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"pm.test(\"Response time is less than 180ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(180);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"id\": 0,\n  \"phone\": \"_-=+\",\n  \"userStatus\": 0\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{userurl}}/user/cat?email=catgmail.com",
+					"host": [
+						"{{userurl}}"
+					],
+					"path": [
+						"user",
+						"cat"
+					],
+					"query": [
+						{
+							"key": "email",
+							"value": "catgmail.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Negative",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.sendRequest(\"https://postman-echo.com/get\", function (err, response) {",
+							"    console.log(response.json());",
+							"});",
+							"pm.test(\"Status code is 201 and 202\", function () {",
+							"    pm.response.to.have.status(201,202);",
+							"});",
+							"pm.test(\"Response time is less than 400ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(400);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{userurl}}/user/dog",
+					"host": [
+						"{{userurl}}"
+					],
+					"path": [
+						"user",
+						"dog"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "userurl",
+			"value": "https://petstore.swagger.io/v2"
+		}
+	]
+}
